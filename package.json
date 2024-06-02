@@ -1,5 +1,5 @@
 {
-  "name": "window-controls",
+  "name": "@vinlemon/window-controls",
   "description": "Webcomponent window-controls following open-wc recommendations",
   "license": "MIT",
   "author": "window-controls",
@@ -32,6 +32,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/window-controls.git"
+    "url": "git+https://github.com/vinlemon/window-controls.git"
   }
 }
