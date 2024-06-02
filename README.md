@@ -5,14 +5,14 @@ This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) reco
 ## Installation
 
 ```bash
-npm i window-controls
+npm i @vinlemon/window-controls
 ```
 
 ## Usage
 
 ```html
 <script type="module">
-  import 'window-controls/window-controls.js';
+  import '@vinlemon/window-controls/window-controls.js';
 </script>
 
 <window-controls></window-controls>
