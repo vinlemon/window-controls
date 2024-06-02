@@ -8,36 +8,71 @@
     />
     <style>
       body {
+        font-family: monospace;
         background-color: white;
         color: #222222;
       }
+
       table {
-        width: 400px;
         margin: auto;
         border-collapse: collapse;
         border: 1px solid #222222;
       }
+
       th,
       td {
         border: 1px solid #222222;
         padding: 8px;
         text-align: left;
+        height: 45px;
       }
+
       th {
         background-color: rgba(0, 0, 0, 0.1);
       }
+
+      .example-window {
+        position: relative;
+        height: 90px;
+        max-width: 600px;
+        margin: 40px auto;
+        background-color: rgba(34, 34, 34, 0.1);
+        border: 2px solid rgba(34, 34, 34, 0.1);
+      }
+
+      .example-window container {
+        position: absolute;
+        top: 40px;
+        left: 0;
+        width: calc(100% - 32px);
+        height: 100%;
+        padding: 16px;
+        border-top: 2px dashed rgba(34, 34, 34, 0.1);
+      }
+
       @media screen and (prefers-color-scheme: dark) {
         body {
           background-color: #222222;
           color: white;
         }
+
         table,
         th,
         td {
           border-color: white;
         }
+
         th {
           background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .example-window {
+          background-color: rgba(255, 255, 255, 0.2);
+          border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .example-window container {
+          border-top: 2px dashed rgba(255, 255, 255, 0.2);
         }
       }
     </style>
@@ -49,34 +84,55 @@
       import { html, render } from "lit";
       import "../window-controls.js";
 
-      const header = "Hello owc World!";
       render(
         html`
-          <window-controls .header=${header}> some light-dom </window-controls>
           <table>
             <tr>
               <th>Component</th>
               <th>Preview</th>
+              <th>HTML</th>
             </tr>
             <tr>
               <td>Gnome Controls</td>
               <td>
                 <gnome-controls></gnome-controls>
               </td>
+              <td>${"<gnome-controls></gnome-controls>"}</td>
             </tr>
             <tr>
               <td>MacOS Controls</td>
               <td>
                 <macos-controls></macos-controls>
               </td>
+              <td>${"<macos-controls></macos-controls>"}</td>
             </tr>
             <tr>
               <td>Windows Controls</td>
               <td>
                 <windows-controls></windows-controls>
               </td>
+              <td>${"<windows-controls></windows-controls>"}</td>
             </tr>
           </table>
+
+          <div class="example-window">
+            <window-controls os="macos"></window-controls>
+            <container>
+              ${'<window-controls os="macos"></window-controls>'}
+            </container>
+          </div>
+          <div class="example-window">
+            <window-controls os="windows"></window-controls>
+            <container>
+              ${'<window-controls os="windows"></window-controls>'}
+            </container>
+          </div>
+          <div class="example-window">
+            <window-controls os="linux"></window-controls>
+            <container>
+              ${'<window-controls os="linux"></window-controls>'}
+            </container>
+          </div>
         `,
         document.querySelector("#demo")
       );

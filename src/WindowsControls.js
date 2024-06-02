@@ -19,6 +19,7 @@ export class WindowsControls extends LitElement {
         --close-hover-background-color: #c42b1c;
         --close-hover-color: white;
         --close-active-background-color: rgba(196, 43, 28, 0.9);
+        height: 32px;
       }
 
       @media screen and (prefers-color-scheme: dark) {
@@ -31,11 +32,10 @@ export class WindowsControls extends LitElement {
 
       .container {
         display: flex;
-        height: 2rem;
+        height: inherit;
       }
 
       button {
-        max-height: 2rem;
         width: 46px;
         cursor: default;
         border-radius: 0;
@@ -55,15 +55,6 @@ export class WindowsControls extends LitElement {
         background-color: var(--active-background-color);
       }
 
-      button.close {
-        max-height: 2rem;
-        width: 46px;
-        cursor: default;
-        border-radius: 0;
-        background-color: transparent;
-        color: var(--color);
-      }
-
       button.close:hover {
         background-color: var(--close-hover-background-color);
         color: var(--close-hover-color);
@@ -76,32 +67,28 @@ export class WindowsControls extends LitElement {
   ];
 
   static properties = {
-    header: { type: String },
-    counter: { type: Number },
+    minimize: { type: Function },
+    maximize: { type: Function },
+    close: { type: Function },
   };
 
   constructor() {
     super();
-    this.header = "Hey there";
-    this.counter = 5;
-  }
-
-  __increment() {
-    this.counter += 1;
+    this.minimize = () => {};
+    this.maximize = () => {};
+    this.close = () => {};
   }
 
   render() {
     return html`
       <div class="container">
-        <button class="minimize" @click=${this.__increment}>
+        <button class="minimize" @click=${this.minimize}>
           ${IconMinimizeWin}
         </button>
-        <button class="maximize" @click=${this.__increment}>
+        <button class="maximize" @click=${this.maximize}>
           ${!this.isMaximized ? IconMaximizeWin : IconMaximizeRestoreWin}
         </button>
-        <button class="close" @click=${this.__increment}>
-          ${IconCloseWin}
-        </button>
+        <button class="close" @click=${this.close}>${IconCloseWin}</button>
       </div>
     `;
   }

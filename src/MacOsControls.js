@@ -22,8 +22,9 @@ export class MacOsControls extends LitElement {
 
       .container {
         display: flex;
-        gap: 0.5rem;
-        padding: 0 0.75rem;
+        width: fit-content;
+        gap: 8px;
+        padding: 1.6px;
         color: var(--color);
       }
 
@@ -41,8 +42,8 @@ export class MacOsControls extends LitElement {
 
       button {
         aspect-ratio: 1;
-        height: 0.75rem;
-        width: 0.75rem;
+        height: 12px;
+        width: 12px;
         cursor: default;
         display: flex;
         align-items: center;
@@ -100,41 +101,37 @@ export class MacOsControls extends LitElement {
   ];
 
   static properties = {
-    header: { type: String },
-    counter: { type: Number },
+    inactive: { type: Boolean },
+    minimize: { type: Function },
+    maximize: { type: Function },
+    close: { type: Function },
   };
 
   constructor() {
     super();
-    this.header = "Hey there";
-    this.counter = 5;
-  }
-
-  __increment() {
-    this.counter += 1;
+    this.inactive = false;
+    this.minimize = () => {};
+    this.maximize = () => {};
+    this.close = () => {};
   }
 
   render() {
     return html`
-      <div class=${`container ${this.isInactive ? "inactive" : ""}`}>
-        <button
-          class="minimize"
-          disabled=${this.isInactive}
-          @click=${this.__increment}
-        >
+      <div class=${`container ${this.inactive ? "inactive" : ""}`}>
+        <button class="close" .disabled=${this.inactive} @click=${this.close}>
           ${IconCloseMac}
         </button>
         <button
-          class="maximize"
-          disabled=${this.isInactive}
-          @click=${this.__increment}
+          class="minimize"
+          .disabled=${this.inactive}
+          @click=${this.minimize}
         >
           ${IconMinMac}
         </button>
         <button
-          class="close"
-          disabled=${this.isInactive}
-          @click=${this.__increment}
+          class="maximize"
+          .disabled=${this.inactive}
+          @click=${this.maximize}
         >
           ${IconFullMac}
         </button>

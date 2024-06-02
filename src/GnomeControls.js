@@ -28,18 +28,18 @@ export class GnomeControls extends LitElement {
       }
 
       .container {
-        margin-right: 10px;
-        height: auto;
         display: flex;
         align-items: center;
+        height: auto;
+        width: fit-content;
         gap: 13px;
       }
 
       button {
         margin: 0;
         aspect-ratio: 1;
-        height: 1.5rem;
-        width: 1.5rem;
+        height: 24px;
+        width: 24px;
         cursor: default;
         border-radius: 50%;
         background-color: var(--background-color);
@@ -62,42 +62,38 @@ export class GnomeControls extends LitElement {
 
       button.close svg,
       button.maximize:not(.restore) svg {
-        height: 0.5rem;
-        width: 0.5rem;
+        height: 8px;
+        width: 8px;
       }
     `,
   ];
 
   static properties = {
-    header: { type: String },
-    counter: { type: Number },
+    minimize: { type: Function },
+    maximize: { type: Function },
+    close: { type: Function },
   };
 
   constructor() {
     super();
-    this.header = "Hey there";
-    this.counter = 5;
-  }
-
-  __increment() {
-    this.counter += 1;
+    this.minimize = () => {};
+    this.maximize = () => {};
+    this.close = () => {};
   }
 
   render() {
     return html`
       <div class="container">
-        <button class="minimize" @click=${this.__increment}>
+        <button class="minimize" @click=${this.minimize}>
           ${IconMinimizeWin}
         </button>
         <button
           class=${`maximize ${this.isMaximized ? "restore" : ""}`}
-          @click=${this.__increment}
+          @click=${this.maximize}
         >
           ${!this.isMaximized ? IconMaximizeWin : IconMaximizeRestoreWin}
         </button>
-        <button class="close" @click=${this.__increment}>
-          ${IconCloseWin}
-        </button>
+        <button class="close" @click=${this.close}>${IconCloseWin}</button>
       </div>
     `;
   }

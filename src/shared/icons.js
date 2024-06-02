@@ -105,8 +105,7 @@ export const IconFullMac = html`
     viewBox="0 0 15 15"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-   
-    style={{ transform: "rotate(-90deg)" }}
+    style="transform: rotate(-90deg)"
   >
     <g clip-path="url(#clip0_20_2057)">
       <path
