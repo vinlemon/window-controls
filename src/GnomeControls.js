@@ -16,6 +16,11 @@ export class GnomeControls extends LitElement {
         --color: #3d3d3d;
         --hover-background-color: #d1d1d1;
         --active-background-color: #bfbfbf;
+        display: flex;
+        align-items: center;
+        height: auto;
+        width: fit-content;
+        gap: 13px;
       }
 
       @media screen and (prefers-color-scheme: dark) {
@@ -25,14 +30,6 @@ export class GnomeControls extends LitElement {
           --hover-background-color: #424242;
           --active-background-color: #565656;
         }
-      }
-
-      .container {
-        display: flex;
-        align-items: center;
-        height: auto;
-        width: fit-content;
-        gap: 13px;
       }
 
       button {
@@ -83,18 +80,16 @@ export class GnomeControls extends LitElement {
 
   render() {
     return html`
-      <div class="container">
-        <button class="minimize" @click=${this.minimize}>
-          ${IconMinimizeWin}
-        </button>
-        <button
-          class=${`maximize ${this.isMaximized ? "restore" : ""}`}
-          @click=${this.maximize}
-        >
-          ${!this.isMaximized ? IconMaximizeWin : IconMaximizeRestoreWin}
-        </button>
-        <button class="close" @click=${this.close}>${IconCloseWin}</button>
-      </div>
+      <button class="minimize" @click=${this.minimize}>
+        ${IconMinimizeWin}
+      </button>
+      <button
+        class=${`maximize ${this.isMaximized ? "restore" : ""}`}
+        @click=${this.maximize}
+      >
+        ${!this.isMaximized ? IconMaximizeWin : IconMaximizeRestoreWin}
+      </button>
+      <button class="close" @click=${this.close}>${IconCloseWin}</button>
     `;
   }
 }

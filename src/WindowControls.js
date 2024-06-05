@@ -37,27 +37,27 @@ export class WindowControls extends LitElement {
     super();
   }
 
-  updated(changedProperties) {
-    if (changedProperties.has("controls")) {
-      this._propagateControls();
-    }
-  }
-
-  _propagateControls() {
-    const child = this.shadowRoot.querySelector(`${this.os}-controls`);
-    if (child) {
-      Object.assign(child, this.controls);
-    }
-  }
-
   _getControlsTemplate() {
     switch (this.os) {
       case "macos":
-        return html`<macos-controls></macos-controls>`;
+        return html`<macos-controls
+          .inactive=${this.controls.inactive}
+          .minimize=${this.controls.minimize}
+          .maximize=${this.controls.maximize}
+          .close=${this.controls.close}
+        ></macos-controls>`;
       case "windows":
-        return html`<windows-controls></windows-controls>`;
+        return html`<windows-controls
+          .minimize=${this.controls.minimize}
+          .maximize=${this.controls.maximize}
+          .close=${this.controls.close}
+        ></windows-controls>`;
       case "linux":
-        return html`<gnome-controls></gnome-controls>`;
+        return html`<gnome-controls
+          .minimize=${this.controls.minimize}
+          .maximize=${this.controls.maximize}
+          .close=${this.controls.close}
+        ></gnome-controls>`;
       default:
         return null;
     }

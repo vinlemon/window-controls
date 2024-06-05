@@ -18,9 +18,6 @@ export class MacOsControls extends LitElement {
         --minimize-active-bg: #bf9122;
         --maximize-bg: #28c93f;
         --maximize-active-bg: #1e9930;
-      }
-
-      .container {
         display: flex;
         width: fit-content;
         gap: 8px;
@@ -28,15 +25,15 @@ export class MacOsControls extends LitElement {
         color: var(--color);
       }
 
-      .container.inactive button {
+      :host([inactive]) button {
         background-color: var(--background-inactive) !important;
       }
 
-      .container button * {
+      button * {
         display: none;
       }
 
-      .container:hover button:not([disabled]) * {
+      :host(:hover) button:not([disabled]) * {
         display: block;
       }
 
@@ -101,7 +98,7 @@ export class MacOsControls extends LitElement {
   ];
 
   static properties = {
-    inactive: { type: Boolean },
+    inactive: { type: Boolean, reflect: true },
     minimize: { type: Function },
     maximize: { type: Function },
     close: { type: Function },
@@ -117,25 +114,23 @@ export class MacOsControls extends LitElement {
 
   render() {
     return html`
-      <div class=${`container ${this.inactive ? "inactive" : ""}`}>
-        <button class="close" .disabled=${this.inactive} @click=${this.close}>
-          ${IconCloseMac}
-        </button>
-        <button
-          class="minimize"
-          .disabled=${this.inactive}
-          @click=${this.minimize}
-        >
-          ${IconMinMac}
-        </button>
-        <button
-          class="maximize"
-          .disabled=${this.inactive}
-          @click=${this.maximize}
-        >
-          ${IconFullMac}
-        </button>
-      </div>
+      <button class="close" .disabled=${this.inactive} @click=${this.close}>
+        ${IconCloseMac}
+      </button>
+      <button
+        class="minimize"
+        .disabled=${this.inactive}
+        @click=${this.minimize}
+      >
+        ${IconMinMac}
+      </button>
+      <button
+        class="maximize"
+        .disabled=${this.inactive}
+        @click=${this.maximize}
+      >
+        ${IconFullMac}
+      </button>
     `;
   }
 }

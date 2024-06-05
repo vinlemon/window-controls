@@ -19,6 +19,7 @@ export class WindowsControls extends LitElement {
         --close-hover-background-color: #c42b1c;
         --close-hover-color: white;
         --close-active-background-color: rgba(196, 43, 28, 0.9);
+        display: flex;
         height: 32px;
       }
 
@@ -28,11 +29,6 @@ export class WindowsControls extends LitElement {
           --hover-background-color: rgba(255, 255, 255, 0.06);
           --active-background-color: rgba(255, 255, 255, 0.04);
         }
-      }
-
-      .container {
-        display: flex;
-        height: inherit;
       }
 
       button {
@@ -81,15 +77,13 @@ export class WindowsControls extends LitElement {
 
   render() {
     return html`
-      <div class="container">
-        <button class="minimize" @click=${this.minimize}>
-          ${IconMinimizeWin}
-        </button>
-        <button class="maximize" @click=${this.maximize}>
-          ${!this.isMaximized ? IconMaximizeWin : IconMaximizeRestoreWin}
-        </button>
-        <button class="close" @click=${this.close}>${IconCloseWin}</button>
-      </div>
+      <button class="minimize" @click=${this.minimize}>
+        ${IconMinimizeWin}
+      </button>
+      <button class="maximize" @click=${this.maximize}>
+        ${!this.isMaximized ? IconMaximizeWin : IconMaximizeRestoreWin}
+      </button>
+      <button class="close" @click=${this.close}>${IconCloseWin}</button>
     `;
   }
 }
