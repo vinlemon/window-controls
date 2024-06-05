@@ -30,7 +30,10 @@ export class WindowControls extends LitElement {
 
   static properties = {
     os: { type: "macos" | "windows" | "linux" },
-    controls: { type: Object },
+    inactive: { type: Boolean },
+    minimize: { type: Boolean },
+    maximize: { type: Boolean },
+    close: { type: Boolean },
   };
 
   constructor() {
@@ -41,22 +44,22 @@ export class WindowControls extends LitElement {
     switch (this.os) {
       case "macos":
         return html`<macos-controls
-          .inactive=${this.controls.inactive}
-          .minimize=${this.controls.minimize}
-          .maximize=${this.controls.maximize}
-          .close=${this.controls.close}
+          .inactive=${this.inactive}
+          .minimize=${this.minimize}
+          .maximize=${this.maximize}
+          .close=${this.close}
         ></macos-controls>`;
       case "windows":
         return html`<windows-controls
-          .minimize=${this.controls.minimize}
-          .maximize=${this.controls.maximize}
-          .close=${this.controls.close}
+          .minimize=${this.minimize}
+          .maximize=${this.maximize}
+          .close=${this.close}
         ></windows-controls>`;
       case "linux":
         return html`<gnome-controls
-          .minimize=${this.controls.minimize}
-          .maximize=${this.controls.maximize}
-          .close=${this.controls.close}
+          .minimize=${this.minimize}
+          .maximize=${this.maximize}
+          .close=${this.close}
         ></gnome-controls>`;
       default:
         return null;
