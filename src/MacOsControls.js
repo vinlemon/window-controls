@@ -114,23 +114,9 @@ export class MacOsControls extends LitElement {
 
   render() {
     return html`
-      <button class="close" .disabled=${this.inactive} @click=${this.close}>
-        ${IconCloseMac}
-      </button>
-      <button
-        class="minimize"
-        .disabled=${this.inactive}
-        @click=${this.minimize}
-      >
-        ${IconMinMac}
-      </button>
-      <button
-        class="maximize"
-        .disabled=${this.inactive}
-        @click=${this.maximize}
-      >
-        ${IconFullMac}
-      </button>
+      <button class="close" @click=${this.close}>${IconCloseMac}</button>
+      <button class="minimize" @click=${this.minimize}>${IconMinMac}</button>
+      <button class="maximize" @click=${this.maximize}>${IconFullMac}</button>
     `;
   }
 }
