@@ -23,6 +23,7 @@ export class MacOsControls extends LitElement {
         gap: 8px;
         padding: 1.6px;
         color: var(--color);
+        -webkit-app-region: no-drag;
       }
 
       :host([inactive]) button {

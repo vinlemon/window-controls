@@ -21,6 +21,7 @@ export class GnomeControls extends LitElement {
         height: auto;
         width: fit-content;
         gap: 13px;
+        -webkit-app-region: no-drag;
       }
 
       @media screen and (prefers-color-scheme: dark) {
