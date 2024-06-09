@@ -21,6 +21,7 @@ export class WindowsControls extends LitElement {
         --close-active-background-color: rgba(196, 43, 28, 0.9);
         display: flex;
         height: 32px;
+        -webkit-app-region: no-drag;
       }
 
       @media screen and (prefers-color-scheme: dark) {

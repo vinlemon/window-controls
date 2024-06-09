@@ -7,7 +7,6 @@ export class WindowControls extends LitElement {
       top: 0;
       left: 0;
       width: 100%;
-      -webkit-app-region: no-drag;
     }
     macos-controls {
       position: absolute;
