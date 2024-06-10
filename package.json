@@ -11,6 +11,7 @@
     ".": "./index.js",
     "./window-controls.js": "./window-controls.js"
   },
+  "types": "./index.d.ts",
   "scripts": {
     "analyze": "cem analyze --litelement",
     "start": "web-dev-server",
