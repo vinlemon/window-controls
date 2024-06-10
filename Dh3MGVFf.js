@@ -275,7 +275,6 @@ const t=globalThis,e=t.ShadowRoot&&(void 0===t.ShadyCSS||t.ShadyCSS.nativeShadow
       top: 0;
       left: 0;
       width: 100%;
-      -webkit-app-region: no-drag;
     }
     macos-controls {
       position: absolute;
@@ -319,6 +318,7 @@ const t=globalThis,e=t.ShadowRoot&&(void 0===t.ShadyCSS||t.ShadyCSS.nativeShadow
         --close-active-background-color: rgba(196, 43, 28, 0.9);
         display: flex;
         height: 32px;
+        -webkit-app-region: no-drag;
       }
 
       @media screen and (prefers-color-scheme: dark) {
