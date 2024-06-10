@@ -3,7 +3,7 @@
   "description": "Webcomponent window-controls following open-wc recommendations",
   "license": "MIT",
   "author": "window-controls",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "main": "index.js",
   "module": "index.js",
